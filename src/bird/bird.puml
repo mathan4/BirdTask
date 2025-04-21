@@ -1,0 +1,104 @@
+@startuml
+
+package bird {
+
+    ' Interfaces
+    interface Eat {
+        +eat(): void
+    }
+
+    interface Fly {
+        +fly(): void
+    }
+
+    interface SaySomething {
+        +saySomething(): void
+    }
+
+    interface FlyingBehaviour {
+        +flyingBehaviour(): void
+    }
+
+    ' Abstract/base class
+    class Bird {
+        -name: String
+        -color: String
+        -weight: int
+
+        +getName(): String
+        +getColor(): String
+        +getWeight(): int
+        +setName(name: String): void
+        +setColor(color: String): void
+        +setWeight(weight: float): void
+    }
+
+    ' Concrete classes
+    class Eagle {
+        +eat(): void
+        +fly(): void
+        +saySomething(): void
+    }
+
+    class Pigeon {
+        +fly(): void
+        +flyingBehaviour(): void
+    }
+
+    class Sparrow {
+        +eat(): void
+        +fly(): void
+    }
+
+    class CrowEagleFlyingBehaviour {
+        +flyingBehaviour(): void
+    }
+
+    class PigeonSparrowFlyingBehaviour {
+        +flyingBehaviour(): void
+    }
+
+    class Dolphin {
+        +eat(): void
+        + saySomething(): void
+    }
+
+    class Crow {
+        +eat(): void
+        +fly(): void
+        +getColor(): void
+        +saySomething(): void
+    }
+
+   class Main {
+       -allBirds: List<Fly>
+   }
+
+    ' Inheritance and Implementation
+    Eagle --|> Bird
+    Eagle ..|> Eat
+    Eagle ..|> Fly
+    Eagle ..|> SaySomething
+
+    Crow --|> Bird
+    Crow ..|> Eat
+    Crow ..|> Fly
+    Crow ..|> SaySomething
+
+    Pigeon --|> Bird
+    Pigeon ..|> Fly
+
+    Sparrow --|> Bird
+    Sparrow ..|> Eat
+    Sparrow ..|> Fly
+
+    CrowEagleFlyingBehaviour ..|> FlyingBehaviour
+    PigeonSparrowFlyingBehaviour ..|> FlyingBehaviour
+
+    Dolphin --|> Bird
+    Dolphin ..|> Eat
+
+
+}
+
+@enduml
